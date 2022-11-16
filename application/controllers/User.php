@@ -78,6 +78,12 @@ class User extends CI_Controller {
         }
         else
         {
+            $directoryName = "./uploads";
+                /* Check if the directory already exists. */
+                if(!is_dir($directoryName)){
+                    /* Directory does not exist, so lets create it. */
+                    mkdir($directoryName, 0755, true);
+            }
             $config['upload_path'] = "./uploads";
             $config['allowed_types'] = "text/plain|text/csv|csv|xls|xlsx|pdf";
             $config['max_size'] = '50000';
